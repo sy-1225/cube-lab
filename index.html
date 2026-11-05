@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="从白色十字到六面复原，跟着可旋转的 3D 魔方一步一步学。">
+<meta name="theme-color" content="#f6f5fa">
+<title>魔方练习室 · 三阶魔方 3D 教程</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%236049dc'/%3E%3Cpath d='m16 6 9 5v10l-9 5-9-5V11z M7 11l9 5 9-5 M16 16v10' fill='none' stroke='white' stroke-width='1.8'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script src="cube.js" defer></script>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-inner">
+    <div class="brand"><span class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 8.4 4.7v9L12 21.2l-8.4-4.7v-9L12 2.8ZM3.6 7.5l8.4 4.7 8.4-4.7M12 12.2v9"/></svg></span><span>魔方练习室<small>CUBE LAB</small></span></div>
+    <a class="notation-link" href="#notation"><span>▤</span> 公式速查</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow"><span></span> 三阶魔方入门 <b> / </b> 3 × 3</div>
+    <h1>跟着 3D 魔方学复原</h1>
+    <p>从白色十字到六面复原。拿起你的魔方，跟着动画一步一步转。</p>
+  </section>
+  <div class="workspace">
+    <aside class="lessons panel">
+      <div class="lessons-head"><h2>复原路线</h2><span id="count">0 / 7 已完成</span></div>
+      <progress id="progress" max="7" value="0" aria-label="课程完成进度"></progress>
+      <nav id="lessons" aria-label="复原步骤"></nav>
+    </aside>
+    <section class="stage panel" aria-label="3D 魔方演示">
+      <div class="scene">
+        <div class="scene-top"><span class="live"><i></i> 3D 交互演示</span><span class="scene-tag">3 × 3 × 3</span></div>
+        <canvas id="cube" tabindex="0" aria-label="交互式三阶魔方，拖动或按方向键旋转视角"></canvas>
+        <div class="scene-bottom"><span>✥ &nbsp;拖动魔方查看六面</span><div><button id="flip" type="button" title="查看顶面或底面">看底面</button><button id="resetView" type="button" title="还原默认视角" aria-label="还原默认视角">↺</button></div></div>
+      </div>
+      <div class="playback">
+        <div class="controls">
+          <button class="icon-btn" id="restart" type="button" aria-label="重置演示" title="重置演示">↺</button>
+          <button class="icon-btn" id="back" type="button" aria-label="上一个动作" title="上一个动作">‹</button>
+          <button class="play" id="play" type="button">▶ &nbsp;播放演示</button>
+          <button class="icon-btn" id="forward" type="button" aria-label="下一个动作" title="下一个动作">›</button>
+          <label class="speed" aria-label="播放速度"><select id="speed" aria-label="播放速度"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+        </div>
+        <div id="timeline" class="timeline" aria-live="polite"></div>
+      </div>
+    </section>
+    <article class="guide panel">
+      <div class="step-label" id="stepLabel"></div>
+      <h2 id="title"></h2>
+      <p class="desc" id="desc"></p>
+      <div class="guide-block"><h3>怎么做</h3><p id="how"></p></div>
+      <div class="guide-block"><div class="formula-head"><h3>演示动作</h3><span>点按跳转</span></div><div class="formula" id="formula"></div></div>
+      <div class="tip"><span class="tip-mark" aria-hidden="true">✓</span><div><strong>完成时检查</strong><p id="tip"></p></div></div>
+      <button type="button" id="nextLesson" class="next">下一课 <span>→</span></button>
+    </article>
+  </div>
+  <section class="notation panel" id="notation">
+    <div class="notation-intro"><div class="eyebrow"><span></span> 开始前先看</div><h2>公式速查</h2><p>想象自己正对着要转的那一面，按这个方向判断顺逆时针。拖动视角时，字母对应的面保持固定。</p></div>
+    <div class="reference"><div id="faces" class="faces"></div>
+      <div class="directions"><span><kbd>R</kbd> 顺时针 90°</span><span><kbd>R′</kbd> 逆时针 90°</span><span><kbd>R2</kbd> 转动 180°</span></div>
+    </div>
+  </section>
+  <footer><span>魔方练习室 · 三阶入门</span><div><a href="https://rubiks.com/solve-guide" target="_blank" rel="noopener">Rubik’s 完整复原指南 ↗</a><a href="https://www.worldcubeassociation.org/regulations/#article-12-notation" target="_blank" rel="noopener">WCA 转动记号 ↗</a></div></footer>
+</main>
+</body>
+</html>
